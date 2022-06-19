@@ -1,4 +1,64 @@
 {
+  "seo": {
+    "title": "Aníbal Santos Gómez",
+    "description": "Resume"
+  },
   "title": "Aníbal Santos Gómez",
-  "description": "Resume"
+  "description": "Resume",
+  "introduction": "",
+  "whatIdo": {
+    "title": "What I do",
+    "list": {
+      "0": "",
+      "1 ": ""
+    }
+  },
+  "whatImLearning": {
+    "title": "What I'm learning"
+  },
+  "experience": {
+    "title": "Experience",
+    "list": {
+      "0": {
+        "company": "",
+        "position": "",
+        "period": {
+          "start": "",
+          "end": ""
+        },
+        "description": {
+          "0": "",
+          "1": ""
+        },
+        "stack": {
+          "0": "",
+          "1": ""
+        }
+      }
+    }
+  },
+  "education": {
+    "title": "Education",
+    "list": {
+      "0": {
+        "school": "",
+        "degree": "",
+        "period": {
+          "start": "",
+          "end": ""
+        },
+        "description": {
+          "0": "",
+          "1": ""
+        }
+      }
+    }
+  },
+  "hobbies": {
+    "title": "Hobbies",
+    "list": {
+      "0": "",
+      "1": ""
+    }
+  }
 }

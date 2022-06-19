@@ -3,5 +3,9 @@
     "title": "",
     "description": ""
   },
-  "date-locale": "en-US"
+  "date-locale": "en-US",
+  "location": {
+    "city": "Salamanca",
+    "country": "Spain"
+  }
 }
