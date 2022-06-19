@@ -1,5 +1,5 @@
 import useTypeWriter from "lib/hooks/useTypewriter";
-import { FC, useState } from "react";
+import { FC } from "react";
 
 type Props = {
   text: string;
