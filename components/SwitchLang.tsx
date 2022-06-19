@@ -163,7 +163,33 @@ const SpainFlag = () => (
 );
 
 const ItalyFlag = () => {
-  return <></>;
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="emoji"
+      viewBox="0 0 72 72"
+      className="w-6 h-6"
+    >
+      <g id="color">
+        <rect x="5" y="17" width="62" height="38" fill="#fff" />
+        <rect x="5" y="17" width="21" height="38" fill="#5c9e31" />
+        <rect x="46" y="17" width="21" height="38" fill="#d22f27" />
+      </g>
+      <g id="line">
+        <rect
+          x="5"
+          y="17"
+          width="62"
+          height="38"
+          fill="none"
+          stroke="#000"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </g>
+    </svg>
+  );
 };
 
 const SwitchLang = () => {
@@ -180,19 +206,21 @@ const SwitchLang = () => {
     };
   });
   return (
-    <>
+    <ul className="flex items-center space-x-2">
       {locales.map(({ locale, Flag }, index) => {
         if (locale !== currentLocale) {
           return (
-            <Link href={asPath} key={index} locale={locale}>
-              <a>
-                <Flag />
-              </a>
-            </Link>
+            <li key={index}>
+              <Link href={asPath} locale={locale}>
+                <a>
+                  <Flag />
+                </a>
+              </Link>
+            </li>
           );
         }
       })}
-    </>
+    </ul>
   );
 };
 
