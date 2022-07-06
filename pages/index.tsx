@@ -12,8 +12,7 @@ const Home: NextPage = () => {
         <div className="flex flex-col justify-center items-start mx-auto pb-16">
           <h1
             className="font-bold text-3xl md:text-5xl tracking-tight mb-1 bg-gradient-to-r bg-clip-text text-transparent 
-            from-yellow-400 via-orange-600 to-yellow-600
-            dark:from-yellow-200 dark:via-orange-400 dark:to-yellow-500
+            from-primary to-secondary
             animate-text"
           >
             {name}

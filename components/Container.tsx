@@ -1,5 +1,5 @@
-
-import { FC, ReactNode } from "react";
+import { useTheme } from "next-themes";
+import { FC, ReactNode, useEffect, useState } from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import Seo, { Props as SeoProps } from "./Seo";
@@ -9,6 +9,14 @@ type Props = {
 };
 
 const Container: FC<Props> = ({ children, SeoProps }) => {
+  const { theme } = useTheme();
+  useEffect(() => {
+    if (theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }, [theme]);
   return (
     <>
       <Seo {...SeoProps} />

@@ -1,11 +1,11 @@
 {
   "defaultSeo": {
-    "title": "",
-    "description": ""
+    "title": "Curriculum Vitae",
+    "description": "Curriculum vitae professionale"
   },
-  "date-locale": "en-US",
+  "date-locale": "it-IT",
   "location": {
     "city": "Salamanca",
-    "country": "Spain"
+    "country": "Spagna"
   }
 }
