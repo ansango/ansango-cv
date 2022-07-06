@@ -2,10 +2,14 @@
 
 const nextTranslate = require("next-translate");
 
-module.exports = nextTranslate({
-  swcMinify: true,
-  reactStrictMode: true,
-  webpack: (config) => {
-    return config;
-  },
-});
+const { withContentlayer } = require("next-contentlayer");
+
+module.exports = withContentlayer(
+  nextTranslate({
+    swcMinify: true,
+    reactStrictMode: true,
+    webpack: (config) => {
+      return config;
+    },
+  })
+);

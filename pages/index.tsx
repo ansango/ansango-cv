@@ -1,10 +1,18 @@
 import Container from "components/Container";
 import Structure from "components/Structure";
-import type { NextPage } from "next";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { personal } from "lib/data";
 import TypeWriter from "components/TypeWriter";
 
-const Home: NextPage = () => {
+import { allData } from "contentlayer/generated";
+export const getStaticProps: GetStaticProps = ({ locale }) => {
+  const data = allData.filter(({ lang }) => lang === locale);
+  return { props: { data, locale } };
+};
+
+const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  data,
+}) => {
   const { name } = personal;
   return (
     <Container>
