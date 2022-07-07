@@ -17,7 +17,7 @@ const Terminal: FC<Props> = ({
 }) => {
   const { word, isEnd } = useTypeWriter(currentPosition);
   return (
-    <div className="bg-base-200 md:p-5 w-full">
+    <div className="md:bg-base-200 md:p-5 w-full">
       <div className="mockup-code">
         <ul className="space-y-2">
           <li className="ml-[2ch] flex items-center space-x-4">
