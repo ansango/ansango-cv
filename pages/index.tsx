@@ -37,51 +37,52 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <Container>
       <Structure>
-        <div className="bg-base-200 p-2 md:p-5 w-full">
-          <div className="mockup-code">
-            <ul className="space-y-2">
-              <li className="ml-[2ch] flex items-center space-x-4">
-                <code className="opacity-50">1</code>
-                <h1
-                  className="font-bold text-2xl sm:text-3xl tracking-tight bg-gradient-to-r bg-clip-text text-transparent 
+        <div className="space-y-10">
+          <div className="bg-base-200 p-2 md:p-5 w-full">
+            <div className="mockup-code">
+              <ul className="space-y-2">
+                <li className="ml-[2ch] flex items-center space-x-4">
+                  <code className="opacity-50">1</code>
+                  <h1
+                    className="font-bold text-2xl sm:text-3xl tracking-tight bg-gradient-to-r bg-clip-text text-transparent 
             from-accent to-secondary
             animate-text flex items-center gap-2"
-                >
-                  <div className="avatar">
-                    <div className="mask mask-circle bg-base-content h-10 w-10 bg-opacity-10 p-px">
-                      <Image
-                        src={avatar}
-                        alt="Avatar Tailwind CSS Component"
-                        className="mask mask-circle"
-                      />
+                  >
+                    <div className="avatar">
+                      <div className="mask mask-circle bg-base-content h-10 w-10 bg-opacity-10 p-px">
+                        <Image
+                          src={avatar}
+                          alt="Avatar Tailwind CSS Component"
+                          className="mask mask-circle"
+                        />
+                      </div>
                     </div>
+                    <span>{profile.fullName}</span>
+                  </h1>
+                </li>
+                <li className={isEnd ? "bg-success text-success-content" : ""}>
+                  <div className="ml-[2ch] flex items-center space-x-4">
+                    <code className="opacity-50">2</code>
+                    <code className="sm:flex sm:items-center sm:h-7 sm:text-xl">
+                      {word}
+                    </code>
                   </div>
-                  <span>{profile.fullName}</span>
-                </h1>
-              </li>
-              <li className={isEnd ? "bg-success text-success-content" : ""}>
-                <div className="ml-[2ch] flex items-center space-x-4">
-                  <code className="opacity-50">2</code>
-                  <code className="sm:flex sm:items-center sm:h-7 sm:text-xl">
-                    {word}
-                  </code>
-                </div>
-              </li>
+                </li>
 
-              <li className="ml-[2ch] flex space-x-4 transition-all">
-                <code className="opacity-50">3</code>
-                <code className="w-full">{profile.about}</code>
-              </li>
+                <li className="ml-[2ch] flex space-x-4 transition-all">
+                  <code className="opacity-50">3</code>
+                  <code className="w-full">{profile.about}</code>
+                </li>
 
-              <li className="ml-[2ch] flex space-x-4 transition-all">
-                <code className="opacity-50">4</code>
-                <code className="w-full">{profile.location}</code>
-              </li>
-            </ul>
+                <li className="ml-[2ch] flex space-x-4 transition-all">
+                  <code className="opacity-50">4</code>
+                  <code className="w-full">{profile.location}</code>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
 
-        <div>
+          {/* <div>
           <ExternalLink href={contact.email}>
             <span className="flex items-center gap-2 text-primary">
               <svg
@@ -148,8 +149,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               Linkedin
             </span>
           </ExternalLink>
-        </div>
-        <div className="bg-base-100 space-y-5 md:space-y-10">
+        </div> */}
+
+          {/* <div className="bg-base-100 space-y-5 md:space-y-10">
           <div className="divider text-base-content/60 m-0">
             {work.sectionHeading}
           </div>
@@ -160,69 +162,74 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               </div>
             ))}
           </div>
-        </div>
-        <div className="bg-base-100 space-y-5 md:space-y-10">
-          <div className="divider text-base-content/60 m-0">
-            {skills.sectionHeading}
-          </div>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {skills.data.map(({ name, details }) => (
-              <div key={name}>
-                <div className="text-lg font-medium">{name}</div>
-                <div className="">
-                  {details.map((skill) => (
-                    <span className="badge badge-info mr-1 mb-2" key={skill}>
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="bg-base-100 space-y-5 md:space-y-10">
-          <div className="divider text-base-content/60 m-0">
-            {education.sectionHeading}
-          </div>
-          <div className="grid gap-5">
-            {education.data.map(
-              (
-                {
-                  degree,
-                  location,
-                  school,
-                  description,
-                  gpa,
-                  startDate,
-                  endDate,
-                },
-                index
-              ) => (
-                <div key={index}>
-                  <div className="text-lg font-semibold">{school}</div>
-                  <div className="md:flex justify-between mb-5">
-                    <div>
-                      <p className="font-medium">{degree}</p>
-                      <p className="md:hidden">{location}</p>
-                      <p className="md:hidden">
-                        {formatDate(startDate, t("date-locale"))} -{" "}
-                        {formatDate(endDate, t("date-locale"))}
-                      </p>
-                      <p>{gpa}</p>
-                    </div>
-                    <div className="hidden md:block md:text-right">
-                      <p>{location}</p>
-                      <p>
-                        {formatDate(startDate, t("date-locale"))} -{" "}
-                        {formatDate(endDate, t("date-locale"))}
-                      </p>
-                    </div>
-                  </div>
+        </div> */}
 
-                  <p>{description}</p>
+          <div className="bg-base-100 space-y-5 md:space-y-10">
+            <div className="divider text-base-content/60 m-0">
+              {skills.sectionHeading}
+            </div>
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {skills.data.map(({ name, details }) => (
+                <div key={name}>
+                  <div className="text-lg font-medium">{name}</div>
+                  <div className="">
+                    {details.map((skill) => (
+                      <span
+                        className="badge badge-accent mr-1 mb-2"
+                        key={skill}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              )
-            )}
+              ))}
+            </div>
+          </div>
+          <div className="bg-base-100 space-y-5 md:space-y-10">
+            <div className="divider text-base-content/60 m-0">
+              {education.sectionHeading}
+            </div>
+            <div className="grid gap-5">
+              {education.data.map(
+                (
+                  {
+                    degree,
+                    location,
+                    school,
+                    description,
+                    gpa,
+                    startDate,
+                    endDate,
+                  },
+                  index
+                ) => (
+                  <div key={index}>
+                    <div className="text-lg font-semibold">{school}</div>
+                    <div className="md:flex justify-between mb-5">
+                      <div>
+                        <p className="font-medium">{degree}</p>
+                        <p className="md:hidden">{location}</p>
+                        <p className="md:hidden">
+                          {formatDate(startDate, t("date-locale"))} -{" "}
+                          {formatDate(endDate, t("date-locale"))}
+                        </p>
+                        <p className="badge badge-secondary">{gpa}</p>
+                      </div>
+                      <div className="hidden md:block md:text-right">
+                        <p>{location}</p>
+                        <p>
+                          {formatDate(startDate, t("date-locale"))} -{" "}
+                          {formatDate(endDate, t("date-locale"))}
+                        </p>
+                      </div>
+                    </div>
+
+                    <p>{description}</p>
+                  </div>
+                )
+              )}
+            </div>
           </div>
         </div>
       </Structure>
