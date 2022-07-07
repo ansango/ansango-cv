@@ -9,10 +9,15 @@ type Props = {
   location: string;
 };
 
-const Terminal: FC<Props> = ({ fullName, currentPosition, about, location }) => {
+const Terminal: FC<Props> = ({
+  fullName,
+  currentPosition,
+  about,
+  location,
+}) => {
   const { word, isEnd } = useTypeWriter(currentPosition);
   return (
-    <div className="bg-base-200 p-2 md:p-5 w-full">
+    <div className="bg-base-200 md:p-5 w-full">
       <div className="mockup-code">
         <ul className="space-y-2">
           <li className="ml-[2ch] flex items-center space-x-4">
@@ -23,11 +28,13 @@ const Terminal: FC<Props> = ({ fullName, currentPosition, about, location }) => 
             animate-text flex items-center gap-2"
             >
               <div className="avatar">
-                <div className="mask mask-circle bg-base-content h-10 w-10 bg-opacity-10 p-px">
+                <div className="mask mask-circle bg-base-content h-8 w-8 sm:w-10 sm:h-10 bg-opacity-10 p-px">
                   <Image
                     src={avatar}
-                    alt="Avatar Tailwind CSS Component"
+                    alt="avatar"
                     className="mask mask-circle"
+                    width={50}
+                    height={50}
                   />
                 </div>
               </div>
@@ -37,18 +44,18 @@ const Terminal: FC<Props> = ({ fullName, currentPosition, about, location }) => 
           <li className={isEnd ? "bg-success text-success-content" : ""}>
             <div className="ml-[2ch] flex items-center space-x-4">
               <code className="opacity-50">2</code>
-              <code className="sm:flex sm:items-center sm:h-7 sm:text-xl">
-                {word}
+              <code className="sm:flex sm:items-center sm:h-7 ">
+                <h2 className="sm:text-lg">{word}</h2>
               </code>
             </div>
           </li>
 
-          <li className="ml-[2ch] flex space-x-4 transition-all">
+          <li className="ml-[2ch] flex space-x-4">
             <code className="opacity-50">3</code>
             <code className="w-full">{about}</code>
           </li>
 
-          <li className="ml-[2ch] flex space-x-4 transition-all">
+          <li className="ml-[2ch] flex space-x-4">
             <code className="opacity-50">4</code>
             <code className="w-full">{location}</code>
           </li>
