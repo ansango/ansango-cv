@@ -151,18 +151,32 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </ExternalLink>
         </div> */}
 
-          {/* <div className="bg-base-100 space-y-5 md:space-y-10">
-          <div className="divider text-base-content/60 m-0">
-            {work.sectionHeading}
+          <div className="bg-base-100 space-y-5 md:space-y-10">
+            <div className="divider text-base-content/60 m-0">
+              {work.sectionHeading}
+            </div>
+            <div className="grid gap-5">
+              {work.data.map(
+                (
+                  { title, description, company, location, startDate, endDate },
+                  index
+                ) => {
+                  return (
+                    <div key={index}>
+                      <div className="text-lg font-extrabold">{title}</div>
+                      <p>{company}</p>
+                      <p>{description}</p>
+                      <p>{location}</p>
+                      <p>
+                        {formatDate(startDate, t("date-locale"))} -{" "}
+                        {formatDate(endDate, t("date-locale"))}
+                      </p>
+                    </div>
+                  );
+                }
+              )}
+            </div>
           </div>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {work.data.map(({ title, details }, index) => (
-              <div key={index}>
-                <div className="text-lg font-extrabold">{title}</div>
-              </div>
-            ))}
-          </div>
-        </div> */}
 
           <div className="bg-base-100 space-y-5 md:space-y-10">
             <div className="divider text-base-content/60 m-0">

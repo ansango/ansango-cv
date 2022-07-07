@@ -1,4 +1,3 @@
-
 const formatDate = (date, locale) => {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
@@ -6,7 +5,10 @@ const formatDate = (date, locale) => {
     day: "numeric",
   };
 
-  const now = new Date(date).toLocaleDateString(locale, options);
+  const now =
+    date === "today"
+      ? new Date().toLocaleString(locale, options)
+      : new Date(date).toLocaleDateString(locale, options);
 
   return now;
 };
