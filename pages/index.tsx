@@ -158,19 +158,45 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <div className="grid gap-5">
               {work.data.map(
                 (
-                  { title, description, company, location, startDate, endDate },
+                  {
+                    title,
+                    description,
+                    company,
+                    location,
+                    startDate,
+                    endDate,
+                    skills,
+                  },
                   index
                 ) => {
                   return (
                     <div key={index}>
-                      <div className="text-lg font-extrabold">{title}</div>
-                      <p>{company}</p>
+                      <div className="text-lg font-semibold">{company}</div>
+                      <div className="md:flex justify-between mb-5">
+                        <div>
+                          <p className="font-medium">{title}</p>
+                          <p className="md:hidden">{location}</p>
+                          <p className="md:hidden">
+                            {formatDate(startDate, t("date-locale"))} -{" "}
+                            {formatDate(endDate, t("date-locale"))}
+                          </p>
+                          {skills &&
+                            skills.map((skill, index) => (
+                              <p key={index} className="badge badge-primary mr-2 mb-2">
+                                {skill}
+                              </p>
+                            ))}
+                        </div>
+                        <div className="hidden md:block md:text-right">
+                          <p>{location}</p>
+                          <p>
+                            {formatDate(startDate, t("date-locale"))} -{" "}
+                            {formatDate(endDate, t("date-locale"))}
+                          </p>
+                        </div>
+                      </div>
+
                       <p>{description}</p>
-                      <p>{location}</p>
-                      <p>
-                        {formatDate(startDate, t("date-locale"))} -{" "}
-                        {formatDate(endDate, t("date-locale"))}
-                      </p>
                     </div>
                   );
                 }
@@ -189,7 +215,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                   <div className="">
                     {details.map((skill) => (
                       <span
-                        className="badge badge-accent mr-1 mb-2"
+                        className="badge badge-accent mr-2 mb-2"
                         key={skill}
                       >
                         {skill}
