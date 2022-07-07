@@ -7,9 +7,10 @@ import { pick } from "contentlayer/client";
 import ExternalLink from "components/ExternalLink";
 import useTypeWriter from "lib/hooks/useTypewriter";
 import Image from "next/image";
-import avatar from "public/avatar.jpeg";
+
 import formatDate from "lib/utils/formatDate";
 import useTranslation from "next-translate/useTranslation";
+import Terminal from "components/Terminal";
 export const getStaticProps: GetStaticProps = ({ locale }) => {
   const data = allData
     .filter(({ lang }) => lang === locale)
@@ -31,56 +32,19 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   data,
 }) => {
   const { profile, contact, education, work, skills, projects } = data;
-  const { word, isEnd } = useTypeWriter(profile.currentPosition);
 
+  const TerminalProps = {
+    fullName: profile.fullName,
+    currentPosition: profile.currentPosition,
+    about: profile.about,
+    location: profile.location,
+  };
   const { t } = useTranslation("common");
   return (
     <Container>
       <Structure>
         <div className="space-y-10">
-          <div className="bg-base-200 p-2 md:p-5 w-full">
-            <div className="mockup-code">
-              <ul className="space-y-2">
-                <li className="ml-[2ch] flex items-center space-x-4">
-                  <code className="opacity-50">1</code>
-                  <h1
-                    className="font-bold text-2xl sm:text-3xl tracking-tight bg-gradient-to-r bg-clip-text text-transparent 
-            from-accent to-secondary
-            animate-text flex items-center gap-2"
-                  >
-                    <div className="avatar">
-                      <div className="mask mask-circle bg-base-content h-10 w-10 bg-opacity-10 p-px">
-                        <Image
-                          src={avatar}
-                          alt="Avatar Tailwind CSS Component"
-                          className="mask mask-circle"
-                        />
-                      </div>
-                    </div>
-                    <span>{profile.fullName}</span>
-                  </h1>
-                </li>
-                <li className={isEnd ? "bg-success text-success-content" : ""}>
-                  <div className="ml-[2ch] flex items-center space-x-4">
-                    <code className="opacity-50">2</code>
-                    <code className="sm:flex sm:items-center sm:h-7 sm:text-xl">
-                      {word}
-                    </code>
-                  </div>
-                </li>
-
-                <li className="ml-[2ch] flex space-x-4 transition-all">
-                  <code className="opacity-50">3</code>
-                  <code className="w-full">{profile.about}</code>
-                </li>
-
-                <li className="ml-[2ch] flex space-x-4 transition-all">
-                  <code className="opacity-50">4</code>
-                  <code className="w-full">{profile.location}</code>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <Terminal {...TerminalProps} />
 
           {/* <div>
           <ExternalLink href={contact.email}>
@@ -182,7 +146,10 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                           </p>
                           {skills &&
                             skills.map((skill, index) => (
-                              <p key={index} className="badge badge-primary mr-2 mb-2">
+                              <p
+                                key={index}
+                                className="badge badge-primary mr-2 mb-2"
+                              >
                                 {skill}
                               </p>
                             ))}
