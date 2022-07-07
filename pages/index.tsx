@@ -199,13 +199,27 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                 index
               ) => (
                 <div key={index}>
-                  <div className="text-lg font-medium">{school}</div>
-                  <p>{location}</p>
-                  <p>{degree}</p>
-                  <p>{gpa}</p>
+                  <div className="text-lg font-semibold">{school}</div>
+                  <div className="md:flex justify-between mb-5">
+                    <div>
+                      <p className="font-medium">{degree}</p>
+                      <p className="md:hidden">{location}</p>
+                      <p className="md:hidden">
+                        {formatDate(startDate, t("date-locale"))} -{" "}
+                        {formatDate(endDate, t("date-locale"))}
+                      </p>
+                      <p>{gpa}</p>
+                    </div>
+                    <div className="hidden md:block md:text-right">
+                      <p>{location}</p>
+                      <p>
+                        {formatDate(startDate, t("date-locale"))} -{" "}
+                        {formatDate(endDate, t("date-locale"))}
+                      </p>
+                    </div>
+                  </div>
+
                   <p>{description}</p>
-                  {formatDate(startDate, t("date-locale"))} -{" "}
-                  {formatDate(endDate, t("date-locale"))}
                 </div>
               )
             )}
