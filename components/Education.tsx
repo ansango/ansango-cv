@@ -28,7 +28,7 @@ const Education: FC<Props> = ({ data, sectionHeading }) => {
           ) => (
             <div key={index}>
               <div className="text-lg font-semibold">{school}</div>
-              <div className="md:flex justify-between mb-5">
+              <div className="md:flex justify-between mb-3">
                 <div>
                   <p className="font-medium">{degree}</p>
                   <p className="md:hidden">{location}</p>

@@ -24,7 +24,7 @@ const Container: FC<Props> = ({ children, SeoProps }) => {
       <Seo {...SeoProps} />
       <div className="flex flex-col justify-center px-2 sm:px-3 md:px-5">
         <Nav />
-        <main className="pb-10 pt-2 md:pt-5">{children}</main>
+        <main className="pb-10 pt-5">{children}</main>
         <Footer />
       </div>
     </>

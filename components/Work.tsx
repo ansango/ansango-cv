@@ -38,7 +38,7 @@ const Work: FC<Props> = ({ sectionHeading, data }) => {
             return (
               <div key={index}>
                 <div className="text-lg font-semibold">{company}</div>
-                <div className="md:flex justify-between mb-5">
+                <div className="md:flex justify-between mb-3">
                   <div>
                     <p className="font-medium">{title}</p>
                     <p className="md:hidden">{location}</p>

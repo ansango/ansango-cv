@@ -22,27 +22,22 @@ const SwitchLanguage = () => {
           />
         </svg>
       </button>
-      <div className="py-2">
-        <div className="dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box w-56 shadow-2xl py-2">
-          <ul className="menu menu-compact gap-1 p-3" tabIndex={0}>
-            {staticLocales.map(({ code, flag, name }, index) => {
-              return (
-                <li key={index}>
-                  <Link href={asPath} locale={code}>
-                    <button
-                      className={locale === code ? "flex active" : "flex"}
-                    >
-                      <span>{flag}</span>
-                      <span className="flex flex-1 justify-between">
-                        {name}
-                      </span>
-                    </button>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+
+      <div className="dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box w-56 shadow-2xl top-px mt-14">
+        <ul className="menu menu-compact gap-1 p-3" tabIndex={0}>
+          {staticLocales.map(({ code, flag, name }, index) => {
+            return (
+              <li key={index}>
+                <Link href={asPath} locale={code}>
+                  <button className={locale === code ? "flex active" : "flex"}>
+                    <span>{flag}</span>
+                    <span className="flex flex-1 justify-between">{name}</span>
+                  </button>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );
