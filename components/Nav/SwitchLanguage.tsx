@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const SwitchLanguage = () => {
   const { asPath, locale } = useRouter();
   return (
-    <div className="dropdown dropdown-end dropdown-hover">
+    <div className="dropdown dropdown-end dropdown-hover py-2">
       <button tabIndex={0} className="btn btn-ghost btn-square">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ const SwitchLanguage = () => {
         </svg>
       </button>
 
-      <div className="dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box w-56 shadow-2xl top-px mt-14">
+      <div className="dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box w-56 shadow-2xl top-px mt-16">
         <ul className="menu menu-compact gap-1 p-3" tabIndex={0}>
           {staticLocales.map(({ code, flag, name }, index) => {
             return (

@@ -2,7 +2,7 @@ import Themes from "./Themes";
 
 const SwitchTheme = () => {
   return (
-    <div className="dropdown dropdown-end dropdown-hover">
+    <div className="dropdown dropdown-end dropdown-hover py-2">
       <button className="btn btn-ghost btn-square" tabIndex={0}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@ const SwitchTheme = () => {
 
       <div
         tabIndex={0}
-        className="dropdown-content w-[21.5rem] sm:w-[38rem] md:w-[45rem] lg:w-[61rem] bg-base-200 text-base-content rounded-t-box rounded-b-box shadow-2xl top-px mt-14"
+        className="dropdown-content w-[21.5rem] sm:w-[38rem] md:w-[45rem] lg:w-[61rem] bg-base-200 text-base-content rounded-t-box rounded-b-box shadow-2xl top-px mt-16"
       >
         <div className="max-h-96 h-[70vh] overflow-y-auto menu menu-compact gap-1 p-3">
           <Themes />
