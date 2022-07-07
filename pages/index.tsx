@@ -8,6 +8,9 @@ import Skills from "components/Skills";
 import Work from "components/Work";
 import Education from "components/Education";
 import Contact from "components/Contact";
+import useSWR from "swr";
+import fetcher from "lib/utils/fetcher";
+import ExternalLink from "components/ExternalLink";
 
 export const getStaticProps: GetStaticProps = ({ locale }) => {
   const data = allData
@@ -63,6 +66,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <Structure>
         <div className="space-y-10">
           <Terminal {...terminalProps} />
+
           {/* <Contact {...contactProps} /> */}
           <Work {...workProps} />
           <Skills {...skillProps} />
