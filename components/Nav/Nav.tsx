@@ -9,7 +9,7 @@ const Nav = () => {
       <div className="navbar bg-base-100 rounded-box">
         <div className="space-x-2">
           <div className="avatar">
-            <div className="bg-gradient-to-r from-accent to-secondary rounded-full w-5"></div>
+            <div className="bg-gradient-to-r from-secondary to-accent rounded-full w-5"></div>
           </div>
           <span className="font-semibold">ansango</span>
         </div>
