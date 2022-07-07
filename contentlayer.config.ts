@@ -27,6 +27,12 @@ const Data = defineDocumentType(() => ({
   fields: {
     publishedAt: { type: "string", required: true },
     lang: { type: "string", required: true },
+    profile: { type: "json", required: true },
+    contact: { type: "json", required: true },
+    education: { type: "json", required: true },
+    work: { type: "json", required: true },
+    skills: { type: "json", required: true },
+    projects: { type: "json", required: true },
   },
   computedFields,
 }));
