@@ -1,5 +1,6 @@
+import { defaultTheme } from "lib/utils/themes";
 import { useTheme } from "next-themes";
-import { FC, ReactNode, useEffect, useState } from "react";
+import { FC, ReactNode, useEffect } from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import Seo, { Props as SeoProps } from "./Seo";
@@ -14,7 +15,7 @@ const Container: FC<Props> = ({ children, SeoProps }) => {
     if (theme) {
       document.documentElement.setAttribute("data-theme", theme);
     } else {
-      document.documentElement.setAttribute("data-theme", "light");
+      document.documentElement.setAttribute("data-theme", defaultTheme);
     }
   }, [theme]);
   return (
