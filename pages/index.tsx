@@ -1,11 +1,15 @@
 import Container from "components/Container";
 import Structure from "components/Structure";
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import TypeWriter from "components/TypeWriter";
+
 import { allData } from "contentlayer/generated";
 import { pick } from "contentlayer/client";
 import ExternalLink from "components/ExternalLink";
-
+import useTypeWriter from "lib/hooks/useTypewriter";
+import Image from "next/image";
+import avatar from "public/avatar.jpeg";
+import formatDate from "lib/utils/formatDate";
+import useTranslation from "next-translate/useTranslation";
 export const getStaticProps: GetStaticProps = ({ locale }) => {
   const data = allData
     .filter(({ lang }) => lang === locale)
@@ -27,25 +31,54 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   data,
 }) => {
   const { profile, contact, education, work, skills, projects } = data;
+  const { word, isEnd } = useTypeWriter(profile.currentPosition);
 
+  const { t } = useTranslation("common");
   return (
     <Container>
       <Structure>
-        <div className="bg-base-200 p-2 md:p-5 space-y-2">
-          <div className="flex flex-col justify-center items-start mx-auto">
-            <h1
-              className="font-bold text-3xl md:text-5xl tracking-tight mb-1 bg-gradient-to-r bg-clip-text text-transparent 
-            from-primary to-secondary
-            animate-text"
-            >
-              {profile.fullName}
-            </h1>
+        <div className="bg-base-200 p-2 md:p-5 w-full">
+          <div className="mockup-code">
+            <ul className="space-y-2">
+              <li className="ml-[2ch] flex items-center space-x-4">
+                <code className="opacity-50">1</code>
+                <h1
+                  className="font-bold text-2xl sm:text-3xl tracking-tight bg-gradient-to-r bg-clip-text text-transparent 
+            from-accent to-secondary
+            animate-text flex items-center gap-2"
+                >
+                  <div className="avatar">
+                    <div className="mask mask-circle bg-base-content h-10 w-10 bg-opacity-10 p-px">
+                      <Image
+                        src={avatar}
+                        alt="Avatar Tailwind CSS Component"
+                        className="mask mask-circle"
+                      />
+                    </div>
+                  </div>
+                  <span>{profile.fullName}</span>
+                </h1>
+              </li>
+              <li className={isEnd ? "bg-success text-success-content" : ""}>
+                <div className="ml-[2ch] flex items-center space-x-4">
+                  <code className="opacity-50">2</code>
+                  <code className="sm:flex sm:items-center sm:h-7 sm:text-xl">
+                    {word}
+                  </code>
+                </div>
+              </li>
+
+              <li className="ml-[2ch] flex space-x-4 transition-all">
+                <code className="opacity-50">3</code>
+                <code className="w-full">{profile.about}</code>
+              </li>
+
+              <li className="ml-[2ch] flex space-x-4 transition-all">
+                <code className="opacity-50">4</code>
+                <code className="w-full">{profile.location}</code>
+              </li>
+            </ul>
           </div>
-          <p className="font-bold text-xl md:text-2xl mb-1 h-10 flex items-center">
-            <TypeWriter text={profile.currentPosition} />
-          </p>
-          <p>{profile.about}</p>
-          <p>{profile.location}</p>
         </div>
 
         <div>
@@ -116,20 +149,67 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             </span>
           </ExternalLink>
         </div>
-
-        <div className="grid gap-5">
-          {skills.data.map(({ name, details }) => (
-            <div key={name}>
-              <p className="pb-2">{name}</p>
-              <div className="">
-                {details.map((skill) => (
-                  <span className="badge badge-info mr-1 mb-2" key={skill}>
-                    {skill}
-                  </span>
-                ))}
+        <div className="bg-base-100 space-y-5 md:space-y-10">
+          <div className="divider text-base-content/60 m-0">
+            {work.sectionHeading}
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {work.data.map(({ title, details }, index) => (
+              <div key={index}>
+                <div className="text-lg font-extrabold">{title}</div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+        <div className="bg-base-100 space-y-5 md:space-y-10">
+          <div className="divider text-base-content/60 m-0">
+            {skills.sectionHeading}
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {skills.data.map(({ name, details }) => (
+              <div key={name}>
+                <div className="text-lg font-medium">{name}</div>
+                <div className="">
+                  {details.map((skill) => (
+                    <span className="badge badge-info mr-1 mb-2" key={skill}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="bg-base-100 space-y-5 md:space-y-10">
+          <div className="divider text-base-content/60 m-0">
+            {education.sectionHeading}
+          </div>
+          <div className="grid gap-5">
+            {education.data.map(
+              (
+                {
+                  degree,
+                  location,
+                  school,
+                  description,
+                  gpa,
+                  startDate,
+                  endDate,
+                },
+                index
+              ) => (
+                <div key={index}>
+                  <div className="text-lg font-medium">{school}</div>
+                  <p>{location}</p>
+                  <p>{degree}</p>
+                  <p>{gpa}</p>
+                  <p>{description}</p>
+                  {formatDate(startDate, t("date-locale"))} -{" "}
+                  {formatDate(endDate, t("date-locale"))}
+                </div>
+              )
+            )}
+          </div>
         </div>
       </Structure>
     </Container>

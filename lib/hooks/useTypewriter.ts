@@ -52,6 +52,10 @@ class TypeWritter {
     return this.word;
   }
 
+  public isEnd(): boolean {
+    return this.word === this.memoWord;
+  }
+
   public startTypeWord(str: string) {
     this.erasing = true;
     this.nextWord = str;
@@ -76,6 +80,7 @@ const writter = new TypeWritter();
 
 export default function useTypeWriter(str: string) {
   const [word, setWord] = useState<null | string>(null);
+  const [isEnd, setIsEnd] = useState<boolean>(false);
   const intervalRef = useRef<any>({});
   const strRef = useRef<any>({});
 
@@ -92,5 +97,11 @@ export default function useTypeWriter(str: string) {
     };
   }, [word]);
 
-  return word;
+  useEffect(() => {
+    if (writter.isEnd()) {
+      setIsEnd(true);
+    }
+  }, [word]);
+
+  return { word, isEnd };
 }

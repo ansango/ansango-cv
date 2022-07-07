@@ -92,6 +92,7 @@ const Nav = () => {
           </button>
         </Link>
       </div>
+
       <hr className="w-full border-1 border-primary" />
     </Structure>
   );
