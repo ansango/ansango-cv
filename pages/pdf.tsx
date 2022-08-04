@@ -5,7 +5,7 @@ import { Suspense } from "react";
 
 import type { FC } from "react";
 
-const DynamicPDF = dynamic(() => import("../components/Docu"), {
+const DynamicPDF = dynamic(() => import("../components/Doc2"), {
   ssr: false,
 });
 
