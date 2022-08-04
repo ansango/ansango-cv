@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  locationId      String
+  fullName        String
+  currentPosition String
+  about           String
+  avatar          String
+  email           String
+  phone           String
+  linkedin        String
+  github          String
+  primarySkills   String
+  secondarySkills String
+  industries      String
+  languages       String
+  location        Location @relation(fields: [locationId], references: [id])
+}
+
+model Job {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  role       String
+  company    String
+  locationId String
+  tasks      String[]
+  startDate String
+  endDate   String
+  skills    Skill  @relation(fields: [skillId], references: [id])
+  skillId   String @db.ObjectId
+}
+
+model Skill {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  Job  Job[]
+}
+
+model Language {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  iso          String
+  code         String
+  translations Json[]
+}
+
+model City {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  translations Json[]
+  Location     Location[]
+}
+
+model Country {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  translations Json[]
+  Location     Location[]
+}
+
+model Location {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  countryId String
+  cityId    String
+
+  country Country   @relation(fields: [countryId], references: [id])
+  city    City      @relation(fields: [cityId], references: [id])
+  Profile Profile[]
+}

@@ -3,6 +3,6 @@ module.exports = {
   defaultLocale: "en",
   localeDetection: false,
   pages: {
-    "*": ["common"],
+    "*": ["common", "skills"],
   },
 };

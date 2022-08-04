@@ -21,10 +21,13 @@ export type FrontendSkill =
   | "Redux Toolkit"
   | "Sass"
   | "Less"
+  | "CSS Modules"
   | "Tailwindcss"
   | "Chakra UI"
   | "Bootstrap"
-  | "Bulma";
+  | "Bulma"
+  | "Material UI"
+  | "Vuetify";
 
 export type BackendSkill =
   | "Node.js"

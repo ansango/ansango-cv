@@ -7,7 +7,6 @@ export type School = {
 
 export type Degree = {
   school: School;
-  location: Placement;
   degree: string;
   gpa: string;
   description: string[];

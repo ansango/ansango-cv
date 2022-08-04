@@ -1,0 +1,23 @@
+{
+  "skills": {
+    "sectionHeading": "Abilità",
+    "frontend": {
+      "name": "Frontend"
+    },
+    "backend": {
+      "name": "Backend"
+    },
+    "qa": {
+      "name": "QA"
+    },
+    "tools": {
+      "name": "Tooling"
+    },
+    "product": {
+      "name": "Prodotto"
+    },
+    "other": {
+      "name": "Altre"
+    }
+  }
+}

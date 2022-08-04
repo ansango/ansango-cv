@@ -1,3 +1,4 @@
+import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Structure from "../Structure";
@@ -7,6 +8,8 @@ const DynamicPDF = dynamic(() => import("../../components/PdfDownload"), {
   ssr: false,
 });
 const Nav = () => {
+  const { t } = useTranslation("common");
+
   return (
     <Structure>
       <div className="navbar bg-base-100 rounded-box">

@@ -23,7 +23,6 @@ const Seo: FC<Props> = ({
   const { t } = useTranslation("common");
   const { asPath, locale } = useRouter();
   const localePrefix = locale === "en" ? "" : `/${locale}`;
-
   const meta = {
     title: title || `${author} - ${t(`defaultSeo.title`)}`,
     description: description || t(`defaultSeo.description`),

@@ -7,11 +7,6 @@ import Terminal from "components/Terminal";
 import Skills from "components/Skills";
 import Work from "components/Work";
 import Education from "components/Education";
-import Contact from "components/Contact";
-import useSWR from "swr";
-import fetcher from "lib/utils/fetcher";
-import ExternalLink from "components/ExternalLink";
-import dynamic from "next/dynamic";
 
 export const getStaticProps: GetStaticProps = ({ locale }) => {
   const data = allData
@@ -33,17 +28,13 @@ export const getStaticProps: GetStaticProps = ({ locale }) => {
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   data,
 }) => {
-  const { profile, contact, education, work, skills, projects } = data;
+  const { profile, education, work } = data;
 
   const terminalProps = {
     fullName: profile.fullName,
     currentPosition: profile.currentPosition,
     about: profile.about,
     location: profile.location,
-  };
-  const skillProps = {
-    sectionHeading: skills.sectionHeading,
-    data: skills.data,
   };
 
   const educationProps = {
@@ -55,21 +46,13 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     data: work.data,
   };
 
-  const contactProps = {
-    email: contact.email,
-    github: contact.github,
-    linkedin: contact.linkedin,
-    site: contact.site,
-  };
-
   return (
     <Container>
       <Structure>
         <div className="space-y-10">
           <Terminal {...terminalProps} />
-          {/* <Contact {...contactProps} /> */}
           <Work {...workProps} />
-          <Skills {...skillProps} />
+          <Skills />
           <Education {...educationProps} />
         </div>
       </Structure>
