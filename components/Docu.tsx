@@ -310,15 +310,46 @@ const Docu = () => (
                     <Text>{location}</Text>
                     <Text>
                       {formatDate(startDate, "en-US")} -{" "}
-                      {formatDate(startDate, "en-US")}
+                      {formatDate(endDate, "en-US")}
                     </Text>
                   </View>
                 </View>
-
+                <View style={tw("flex flex-row flex-wrap max-w-md")}>
+                  {skills &&
+                    skills.map((skill, index) => (
+                      <Text
+                        key={index}
+                        style={tw(
+                          "px-1 py-0.5 bg-red-200 rounded-md mr-2 mb-2"
+                        )}
+                      >
+                        {skill}
+                      </Text>
+                    ))}
+                </View>
                 <Text>{description}</Text>
               </View>
             )
           )}
+        </View>
+        <View style={tw("text-xs")}>
+          <Text style={tw("mb-3")}>{skills.sectionHeading}</Text>
+          {skills.data.map(({ name, details }, index) => (
+            <View key={index} style={tw("mb-5")}>
+              <View style={tw("text-lg font-semibold")}>{name}</View>
+              <View style={tw("flex flex-row flex-wrap max-w-md")}>
+                {details &&
+                  details.map((detail, index) => (
+                    <Text
+                      key={index}
+                      style={tw("px-1 py-0.5 bg-red-200 rounded-md mr-2 mb-2")}
+                    >
+                      {detail}
+                    </Text>
+                  ))}
+              </View>
+            </View>
+          ))}
         </View>
         <View style={tw("text-xs")}>
           <Text style={tw("mb-3")}>{education.sectionHeading}</Text>
@@ -346,7 +377,7 @@ const Docu = () => (
                     <Text>{location}</Text>
                     <Text>
                       {formatDate(startDate, "en-US")} -{" "}
-                      {formatDate(startDate, "en-US")}
+                      {formatDate(endDate, "en-US")}
                     </Text>
                   </View>
                 </View>
